@@ -10,6 +10,8 @@ import AuthInitializer from "@/components/AuthInitializer";
 import { AccountProvider } from "@/context/AccountContext";
 
 import { Toaster } from "react-hot-toast";
+import SearchDrawer from "@/components/layout/SearchDrawer";
+import { SearchProvider } from "@/context/SearchContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,14 +39,17 @@ export default function RootLayout({ children }) {
         <CartProvider>
           <WishlistProvider>
             <AccountProvider>
+                <SearchProvider>
               <AuthInitializer />
               <Navbar />
               <CartDrawer />
               <WishlistDrawer />
               <AccountDrawer />
+              <SearchDrawer />
 
               {children}
               <Toaster position="top-right" />
+              </SearchProvider>
             </AccountProvider>
           </WishlistProvider>
         </CartProvider>
